@@ -4,7 +4,7 @@ import { EllipsisVerticalIcon, PlusIcon, ChatBubbleBottomCenterIcon, LinkIcon } 
 export const Task = {
 	title: 'Pages "About" and "Careers"',
 	description: 'All the details are in the file, I\'m sure it will turn out cool!',
-	tags: ['Website-green', 'Design-blue'],
+	tags: ['Design', 'Frontend'],
 	subtasks: [{title:'About', state: true},{title:'Careers', state: false},{title:'Contact', state: false}],
 	comments: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
 	owner: 'John Doe',
@@ -23,9 +23,7 @@ return (
 			<div class={'flex gap-1 text-xs select-none'}>
 				{
 					Task.tags.map((tag, index) => {
-						const type = tag.split('-')[0];
-						const color = tag.split('-')[1];
-						return <span key={index} class={`px-3 text-white font-semibold py-1 bg-${color}-600 rounded-full`}>{type}</span>
+						return <span key={index} class={`px-3 text-white font-semibold py-1 bg-blue-600 rounded-full`}>{tag}</span>
 					})
 				}
 			</div>
