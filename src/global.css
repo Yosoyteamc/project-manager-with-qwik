@@ -21,8 +21,15 @@
  * the styles in here will be applied to the Document, without any sort of CSS scoping.
  *
  */
+
+ :root{
+	--Frontend: #31de59;
+	--Design: #f24242;
+ }
+
 html {
-  -webkit-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;

@@ -1,29 +1,20 @@
 import { component$ } from "@builder.io/qwik";
 import { EllipsisVerticalIcon, PlusIcon, ChatBubbleBottomCenterIcon, LinkIcon } from "heroicons-qwik/24/outline";
+import Tag from "../tag/tag";
+import type { TaskType } from "../../types/types"
 
-export const Task = {
-	title: 'Pages "About" and "Careers"',
-	description: 'All the details are in the file, I\'m sure it will turn out cool!',
-	tags: ['Design', 'Frontend'],
-	subtasks: [{title:'About', state: true},{title:'Careers', state: false},{title:'Contact', state: false}],
-	comments: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
-	owner: 'John Doe',
-	created: {
-		date: '2021-10-10',
-		time: '10:10'
-	},
-	members: ['John Doe', 'Jane Doe', 'John Smith', 'Jane Smith'],
-	link: ['https://www.google.com/']
+export interface TaskProps {
+	Task: TaskType;
 }
 
-export default component$(()=>{
+export default component$(({Task}:TaskProps)=>{
 return (
 	<div class={'max-w-[260px] bg-white p-5 rounded-xl flex flex-col gap-2 items-start'}>
 		<div class={'flex justify-between items-center w-full mb-2'}>
 			<div class={'flex gap-1 text-xs select-none'}>
 				{
 					Task.tags.map((tag, index) => {
-						return <span key={index} class={`px-3 text-white font-semibold py-1 bg-blue-600 rounded-full`}>{tag}</span>
+						return <Tag key={index} tag={tag}></Tag>
 					})
 				}
 			</div>
@@ -66,13 +57,13 @@ return (
 				}
 			</div>
 			<div class={'flex gap-2'}>
-				<div class={'flex text-gray-500 items-center gap-1'}>
+				<button type="button" class={'flex text-gray-500 items-center gap-1'}>
 					<ChatBubbleBottomCenterIcon class={'w-4 h-4 text-gray-500'}/> {Task.comments.length}
-				</div>
+				</button>
 				{ Task.link.length > 0 &&
-					<div class={'flex text-gray-500 items-center gap-1'}>
+					<button type="button" class={'flex text-gray-500 items-center gap-1'}>
 						<LinkIcon class={'w-4 h-4 text-gray-500'}/>{Task.link.length}
-					</div>
+					</button>
 				}
 			</div>
 		</div>
