@@ -14,9 +14,9 @@ export const ColumnProcess = component$(({title, color, TaskList}: ColumnProcess
 		<div class={'p-3 flex flex-col gap-3 w-max'}>
 				<div class={'flex justify-between items-center'}>
 					<div class={'text-sm flex gap-1 items-center'}>
-						<div class={`w-2 h-2 bg-${color}-600 rounded-full`}></div>
+						<div class={`w-2 h-2 ${color} rounded-full`}></div>
 						{ title }
-						<span class={'text-gray-400'}>{TaskList.length}</span>
+						<span class={'text-gray-400 ml-1'}>{TaskList.length}</span>
 					</div>
 					<button type="button" title="Options" class={'flex items-center'}>
 						<EllipsisVerticalIcon class={'w-5 h-5'}/>

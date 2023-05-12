@@ -1,71 +1,17 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { ColumnProcess } from '~/components/column-process/column-process';
-
-export const TaskList = [
-	{
-		title: 'Pages "About" and "Careers"',
-		description: 'All the details are in the file, I\'m sure it will turn out cool!',
-		tags: ['Design', 'Frontend'],
-		subtasks: [{title:'About', state: true},{title:'Careers', state: false},{title:'Contact', state: false}],
-		comments: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
-		owner: 'John Doe',
-		created: {
-			date: '2021-10-10',
-			time: '10:10'
-		},
-		members: ['John Doe', 'Jane Doe', 'John Smith', 'Jane Smith'],
-		link: ['https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/']
-	},
-	{
-		title: 'Pages "About" and "Careers"',
-		description: 'All the details are in the file, I\'m sure it will turn out cool!',
-		tags: ['Marketing', 'Frontend'],
-		subtasks: [{title:'About', state: true},{title:'Careers', state: true},{title:'Contact', state: false}],
-		comments: ['a', 'b', 'c', 'd'],
-		owner: 'John Doe',
-		created: {
-			date: '2021-10-10',
-			time: '10:10'
-		},
-		members: ['John Doe'],
-		link: ['https://www.google.com/', 'https://www.google.com/']
-	},
-	{
-		title: 'Pages "About" and "Careers"',
-		description: 'All the details are in the file, I\'m sure it will turn out cool!',
-		tags: ['Backend'],
-		subtasks: [{title:'About', state: true}],
-		comments: ['a', 'b', 'c', 'd', 'e', 'f'],
-		owner: 'John Doe',
-		created: {
-			date: '2021-10-10',
-			time: '10:10'
-		},
-		members: ['John Doe'],
-		link: []
-	},
-	{
-		title: 'Pages "About" and "Careers"',
-		description: 'All the details are in the file, I\'m sure it will turn out cool!',
-		tags: ['Frontend'],
-		subtasks: [],
-		comments: [],
-		owner: 'John Doe',
-		created: {
-			date: '2021-10-10',
-			time: '10:10'
-		},
-		members: ['John Doe'],
-		link: []
-	}
-]
+import { Projects } from '~/data/projects';
 
 export default component$(() => {
   return (
     <>
-		<div class={'bg-gray-100'}>
-			<ColumnProcess title='New Process' color='red' TaskList={TaskList} ></ColumnProcess>
+		<div class={'bg-gray-100 flex gap-2'}>
+			{
+				Projects[0].process.map((process, index) => {
+					return <ColumnProcess key={index} title={process.title} color={process.color} TaskList={process.tasks}></ColumnProcess>
+				})
+			}
 		</div>
     </>
   );
