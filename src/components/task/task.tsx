@@ -1,4 +1,4 @@
-import { component$, useSignal } from "@builder.io/qwik";
+import { $, component$, useSignal } from "@builder.io/qwik";
 import { EllipsisVerticalIcon, EyeIcon, TrashIcon, HandRaisedIcon, PlusIcon, ChatBubbleBottomCenterIcon, LinkIcon } from "heroicons-qwik/24/outline";
 import Tag from "../tag/tag";
 import type { TaskType } from "../../types/types"
@@ -11,6 +11,13 @@ export default component$(({Task}:TaskProps)=>{
 
 const showOptions = useSignal(false);
 
+const controlForOptions = $(() => {
+	showOptions.value = true;
+	setTimeout(() => {
+		showOptions.value = false;
+	}, 3000);
+});
+
 return (
 	<div class={'relative w-[260px] bg-white p-5 rounded-xl flex flex-col gap-2 items-start'}>
 		<div class={'flex justify-between items-center w-full mb-2'}>
@@ -21,7 +28,7 @@ return (
 					})
 				}
 			</div>
-			<button type="button" title="Options" class={'flex items-center'} onClick$={()=>{showOptions.value = true}}>
+			<button type="button" title="Options" class={'flex items-center'} onClick$={()=>{controlForOptions()}}>
 				<EllipsisVerticalIcon class={'w-5 h-5'}/>
 			</button>
 		</div>
@@ -72,7 +79,7 @@ return (
 		</div>
 		{
 			showOptions.value &&
-			<div class={'absolute top-0 p-2 right-0 w-40 bg-white rounded-xl shadow-md'}>
+			<div class={'absolute pr-7 top-0 p-2 right-0 bg-white rounded-xl shadow-md'}>
 				<ul class={'text-sm p-2 flex flex-col gap-1'}>
 					<li>
 						<button type="button" title="View task" class={'flex gap-2 text-gray-500'}>
