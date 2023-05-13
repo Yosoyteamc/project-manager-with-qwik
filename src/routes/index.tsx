@@ -6,13 +6,13 @@ import { Projects } from '~/data/projects';
 export default component$(() => {
   return (
     <>
-		<div class={'bg-gray-100 flex gap-2'}>
+		<section class={'flex gap-1'}>
 			{
 				Projects[0].process.map((process, index) => {
 					return <ColumnProcess key={index} title={process.title} color={process.color} TaskList={process.tasks}></ColumnProcess>
 				})
 			}
-		</div>
+		</section>
     </>
   );
 });

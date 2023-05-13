@@ -1,5 +1,5 @@
-import { component$ } from "@builder.io/qwik";
-import { EllipsisVerticalIcon, PlusIcon, ChatBubbleBottomCenterIcon, LinkIcon } from "heroicons-qwik/24/outline";
+import { component$, useSignal } from "@builder.io/qwik";
+import { EllipsisVerticalIcon, EyeIcon, TrashIcon, HandRaisedIcon, PlusIcon, ChatBubbleBottomCenterIcon, LinkIcon } from "heroicons-qwik/24/outline";
 import Tag from "../tag/tag";
 import type { TaskType } from "../../types/types"
 
@@ -8,8 +8,11 @@ export interface TaskProps {
 }
 
 export default component$(({Task}:TaskProps)=>{
+
+const showOptions = useSignal(false);
+
 return (
-	<div class={'max-w-[260px] bg-white p-5 rounded-xl flex flex-col gap-2 items-start'}>
+	<div class={'relative w-[260px] bg-white p-5 rounded-xl flex flex-col gap-2 items-start'}>
 		<div class={'flex justify-between items-center w-full mb-2'}>
 			<div class={'flex gap-1 text-xs select-none'}>
 				{
@@ -18,7 +21,7 @@ return (
 					})
 				}
 			</div>
-			<button type="button" title="Options" class={'flex items-center'}>
+			<button type="button" title="Options" class={'flex items-center'} onClick$={()=>{showOptions.value = true}}>
 				<EllipsisVerticalIcon class={'w-5 h-5'}/>
 			</button>
 		</div>
@@ -67,6 +70,29 @@ return (
 				}
 			</div>
 		</div>
+		{
+			showOptions.value &&
+			<div class={'absolute top-0 p-2 right-0 w-40 bg-white rounded-xl shadow-md'}>
+				<ul class={'text-sm p-2 flex flex-col gap-1'}>
+					<li>
+						<button type="button" title="View task" class={'flex gap-2 text-gray-500'}>
+							<EyeIcon class={'w-4'}/>View task
+						</button>
+					</li>
+
+					<li>
+						<button type="button" title="Move task" class={'flex gap-2 text-gray-500'}>
+						<HandRaisedIcon class={'w-4'}/>Move
+						</button>					
+					</li>
+					<li>
+						<button type="button" title="Remove task" class={'flex gap-2 text-red-500'}>
+							<TrashIcon class={'w-4'}/>Remove
+						</button>
+					</li>
+				</ul>
+			</div>
+		}
 	</div>
 );
 });

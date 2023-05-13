@@ -11,7 +11,7 @@ export interface ColumnProcessProps {
 
 export const ColumnProcess = component$(({title, color, TaskList}: ColumnProcessProps) => {
 	return (
-		<div class={'p-3 flex flex-col gap-3 w-max'}>
+		<div class={'p-2 flex flex-col gap-2 w-max'}>
 				<div class={'flex justify-between items-center'}>
 					<div class={'text-sm flex gap-1 items-center'}>
 						<div class={`w-2 h-2 ${color} rounded-full`}></div>
