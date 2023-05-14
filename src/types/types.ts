@@ -1,4 +1,5 @@
 export interface TaskType{
+	id: string;
 	title: string;
 	description: string;
 	tags: string[];
@@ -11,4 +12,11 @@ export interface TaskType{
 	};
 	members: string[];
 	link: string[];
+	process: string;
+}
+
+export interface ProjectType{
+	id: string;
+	title: string;
+	tasks: TaskType[];
 }

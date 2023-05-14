@@ -18,6 +18,10 @@ const controlForOptions = $(() => {
 	}, 3000);
 });
 
+const removeTask = $(() => {
+	console.log('Removing task',Task.id)
+});
+
 return (
 	<div class={'relative w-[260px] bg-white p-5 rounded-xl flex flex-col gap-2 items-start'}>
 		<div class={'flex justify-between items-center w-full mb-2'}>
@@ -79,21 +83,20 @@ return (
 		</div>
 		{
 			showOptions.value &&
-			<div class={'absolute pr-7 top-0 p-2 right-0 bg-white rounded-xl shadow-md'}>
+			<div class={'absolute top-0 p-2 right-0 bg-white rounded-xl shadow-md'}>
 				<ul class={'text-sm p-2 flex flex-col gap-1'}>
 					<li>
-						<button type="button" title="View task" class={'flex gap-2 text-gray-500'}>
+						<button type="button" title="View task" class={'pr-2 flex gap-2 text-gray-500'}>
 							<EyeIcon class={'w-4'}/>View task
 						</button>
 					</li>
-
 					<li>
-						<button type="button" title="Move task" class={'flex gap-2 text-gray-500'}>
+						<button type="button" title="Move task" class={'pr-2 flex gap-2 text-gray-500'}>
 						<HandRaisedIcon class={'w-4'}/>Move
 						</button>					
 					</li>
 					<li>
-						<button type="button" title="Remove task" class={'flex gap-2 text-red-500'}>
+						<button type="button" title="Remove task" class={'pr-2 flex gap-2 text-red-500'} onClick$={()=>{removeTask()}} >
 							<TrashIcon class={'w-4'}/>Remove
 						</button>
 					</li>
